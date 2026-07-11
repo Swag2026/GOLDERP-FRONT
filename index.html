@@ -83,40 +83,42 @@ body {
   position: fixed; inset: 0; z-index: 100;
   display: flex; align-items: center; justify-content: center;
   background:
-    radial-gradient(800px 500px at 60% 10%, rgba(201,162,39,.1), transparent 70%),
-    radial-gradient(600px 400px at 20% 80%, rgba(62,112,85,.08), transparent 60%),
-    var(--ink);
+    radial-gradient(ellipse 900px 600px at 50% 0%, rgba(212,170,48,.18), transparent 65%),
+    radial-gradient(ellipse 700px 500px at 50% 100%, rgba(140,90,10,.12), transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 50%, rgba(212,170,48,.04), transparent 70%),
+    #0A0700;
 }
 .login-card {
-  width: 420px; max-width: 94vw;
-  background: var(--surface);
-  border: 1px solid var(--line-2);
-  border-radius: 16px;
-  padding: 48px 44px 40px;
-  box-shadow: var(--shadow-lg);
+  width: 440px; max-width: 94vw;
+  background: linear-gradient(160deg, #0E0B1A 0%, #0A0800 100%);
+  border: 1px solid rgba(212,170,48,.35);
+  border-radius: 20px;
+  padding: 52px 48px 44px;
+  box-shadow: 0 0 0 1px rgba(212,170,48,.08), 0 32px 80px rgba(0,0,0,.8), 0 0 60px rgba(180,140,20,.12);
   position: relative; overflow: hidden;
+  text-align: center;
 }
 .login-card::before {
   content: "";
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--gold-18), var(--gold-24), #fff8e1, var(--gold-24), var(--gold-18));
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-18) 20%, var(--gold-24) 50%, #fff8e1 65%, var(--gold-24) 80%, var(--gold-18) 95%, transparent);
 }
 .login-gem {
-  width: 80px; height: 80px;
+  width: 100px; height: 100px;
   background: transparent;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
   font-size: 23px;
-  margin-bottom: 20px;
+  margin: 0 auto 24px;
   overflow: hidden;
 }
-.login-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 29px; color: var(--cream); margin-bottom: 4px; }
-.login-sub { color: var(--cream-dim); font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
-.lfield { margin-bottom: 16px; }
+.login-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 30px; color: #F5E9C8; margin-bottom: 6px; letter-spacing: -.01em; }
+.login-sub { color: rgba(180,165,130,.75); font-size: 14.5px; margin-bottom: 32px; line-height: 1.5; }
+.lfield { margin-bottom: 16px; text-align: left; }
 .lfield label { display: block; font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--cream-dim); margin-bottom: 7px; font-weight: 600; }
 .lfield input {
-  width: 100%; background: var(--surface-2); border: 1.5px solid var(--line);
-  color: var(--cream); padding: 13px 16px; border-radius: var(--radius-sm);
+  width: 100%; background: rgba(255,255,255,.05); border: 1.5px solid rgba(212,170,48,.2);
+  color: #EDE0C4; padding: 13px 16px; border-radius: var(--radius-sm);
   font-size: 16px; font-family: 'Inter', sans-serif; transition: var(--transition);
 }
 .lfield input:focus { outline: none; border-color: var(--gold-21); background: var(--surface-3); box-shadow: 0 0 0 3px var(--gold-glow); }
