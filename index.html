@@ -102,13 +102,13 @@ body {
   background: linear-gradient(90deg, var(--gold-18), var(--gold-24), #fff8e1, var(--gold-24), var(--gold-18));
 }
 .login-gem {
-  width: 46px; height: 46px;
-  background: linear-gradient(135deg, var(--gold-24), var(--gold-18));
-  border-radius: 10px;
+  width: 80px; height: 80px;
+  background: transparent;
+  border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   font-size: 23px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 16px rgba(201,162,39,.35);
+  overflow: hidden;
 }
 .login-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 29px; color: var(--cream); margin-bottom: 4px; }
 .login-sub { color: var(--cream-dim); font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
@@ -156,10 +156,11 @@ body {
 }
 .brand { padding: 4px 8px 24px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
 .brand-gem {
-  width: 32px; height: 32px; border-radius: 7px;
-  background: linear-gradient(135deg, var(--gold-24), var(--gold-18));
+  width: 44px; height: 44px; border-radius: 7px;
+  background: transparent;
   display: flex; align-items: center; justify-content: center;
   font-size: 17px; margin-bottom: 10px;
+  overflow: hidden;
 }
 .brand-mark { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; color: var(--cream); letter-spacing: -.01em; }
 .brand-sub { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-21); margin-top: 2px; }
@@ -830,7 +831,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 <!-- ════════════════ LOGIN ════════════════ -->
 <div id="loginScreen">
   <div class="login-card">
-    <div class="login-gem">◆</div>
+    <div class="login-gem"><img src="https://drive.google.com/uc?export=view&id=1AXlAIFxdBicIJnSdjnRVyyVf40YCnHLO" alt="Swag Gold" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" onerror="this.style.display='none';this.parentNode.innerHTML='◆';"></div>
     <div class="login-title" data-i18n="login.title">Exhibition Ledger</div>
     <div class="login-sub" data-i18n="login.sub">Swag Gold — Secure access to your daily gold ledger</div>
     <div class="lfield">
@@ -853,7 +854,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 <!-- ── Sidebar ── -->
 <aside class="sidebar">
   <div class="brand">
-    <div class="brand-gem">◆</div>
+    <div class="brand-gem"><img src="https://drive.google.com/uc?export=view&id=1AXlAIFxdBicIJnSdjnRVyyVf40YCnHLO" alt="Swag Gold" style="width:100%;height:100%;object-fit:contain;border-radius:5px;" onerror="this.style.display='none';this.parentNode.innerHTML='◆';"></div>
     <div class="brand-mark" data-i18n="brand.name">Swag Gold</div>
     <div class="brand-sub" data-i18n="brand.sub">Exhibition Ledger</div>
   </div>
