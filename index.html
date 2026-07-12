@@ -959,15 +959,15 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
     </div>
     <div class="topbar-actions">
       <select class="day-select" id="daySelect" onchange="switchDay(this.value)"></select>
-      <button class="btn small" onclick="addNewDay()">+ New Day</button>
-      <button class="btn small" onclick="openOpeningModal()">✎ Opening Balance</button>
-      <button class="btn gold" onclick="exportDayPDF()">↓ Day Summary</button>
+      <button class="btn small" onclick="addNewDay()" data-i18n="dash.newday">+ New Day</button>
+      <button class="btn small" onclick="openOpeningModal()" data-i18n="dash.opening">✎ Opening Balance</button>
+      <button class="btn gold" onclick="exportDayPDF()" data-i18n="dash.export">↓ Day Summary</button>
     </div>
   </div>
   <div id="mismatchAlert"></div>
   <div class="ledger-strip">
     <div class="ledger-strip-head">
-      <div class="ledger-strip-title">Weight Distribution — Sales (grams by purity)</div>
+      <div class="ledger-strip-title" data-i18n="dash.weightdist">Weight Distribution — Sales (grams by purity)</div>
       <div class="ledger-strip-title" id="totalWeightLabel" style="color:var(--gold-21);">—</div>
     </div>
     <div class="purity-bar" id="purityBar"></div>
@@ -986,18 +986,18 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       </div>
       <div class="panel">
         <div class="panel-header">
-          <div class="panel-title">Sales by Karat (This Day)</div>
+          <div class="panel-title" data-i18n="dash.karatday">Sales by Karat (This Day)</div>
         </div>
         <div class="chart-box" style="height:220px;"><canvas id="karatDayChart"></canvas></div>
       </div>
     </div>
     <div>
       <div class="panel" style="margin-bottom:22px;">
-        <div class="panel-title" style="margin-bottom:18px;">Day Balance</div>
+        <div class="panel-title" style="margin-bottom:18px;" data-i18n="dash.daybal">Day Balance</div>
         <div class="bal-list" id="balanceList"></div>
       </div>
       <div class="panel">
-        <div class="panel-title" style="margin-bottom:16px;">Exhibition Overview</div>
+        <div class="panel-title" style="margin-bottom:16px;" data-i18n="dash.overview">Exhibition Overview</div>
         <div id="exhibitOverview"></div>
       </div>
     </div>
@@ -1024,39 +1024,39 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
     <div id="editNoteWrap"></div>
     <div class="form-grid" style="margin-bottom:18px;">
       <div class="form-field">
-        <label id="fInvoiceLabel">Invoice No.</label>
+        <label id="fInvoiceLabel" data-i18n="frm.invoice">Invoice No.</label>
         <input type="text" id="fInvoice" oninput="checkDuplicate()" placeholder="e.g. 872">
       </div>
       <div class="form-field">
-        <label>Date</label>
+        <label data-i18n="frm.date">Date</label>
         <input type="date" id="fDate" onchange="checkDuplicate()">
       </div>
     </div>
     <div class="form-field" id="fDescWrap" style="margin-bottom:18px;display:none;">
-      <label id="fDescLabel">Description / Reference</label>
+      <label id="fDescLabel" data-i18n="frm.desc">Description / Reference</label>
       <input type="text" id="fDesc" placeholder="e.g. Al Rashid Supplier — invoice settlement">
     </div>
     <div id="karatBlocks"></div>
     <div class="form-grid wide" id="paySplit">
       <div class="form-field">
-        <label>Cash (SAR)</label>
+        <label data-i18n="frm.cash">Cash (SAR)</label>
         <input type="number" id="fCash" placeholder="0" min="0" step="0.01" oninput="onCashInput()">
       </div>
       <div class="form-field">
-        <label id="fCard2Label">Card / Transfer (SAR)</label>
+        <label id="fCard2Label" data-i18n="frm.card">Card / Transfer (SAR)</label>
         <input type="number" id="fCard" placeholder="0" min="0" step="0.01" oninput="onCardInput()">
       </div>
     </div>
     <div class="split-quick" id="splitQuick" style="display:flex;gap:8px;flex-wrap:wrap;margin:-4px 0 16px;">
-      <button type="button" class="btn ghost sm" onclick="quickSplit('cash')" style="padding:7px 14px;font-size:13.5px;">💵 All Cash</button>
-      <button type="button" class="btn ghost sm" onclick="quickSplit('card')" style="padding:7px 14px;font-size:13.5px;">💳 All Card</button>
-      <button type="button" class="btn ghost sm" onclick="quickSplit('half')" style="padding:7px 14px;font-size:13.5px;">⚖ 50 / 50 Split</button>
-      <button type="button" class="btn ghost sm" onclick="quickSplit('clear')" style="padding:7px 14px;font-size:13.5px;">✕ Clear Split</button>
+      <button type="button" class="btn ghost sm" onclick="quickSplit('cash')" style="padding:7px 14px;font-size:13.5px;" data-i18n="frm.allcash">💵 All Cash</button>
+      <button type="button" class="btn ghost sm" onclick="quickSplit('card')" style="padding:7px 14px;font-size:13.5px;" data-i18n="frm.allcard">💳 All Card</button>
+      <button type="button" class="btn ghost sm" onclick="quickSplit('half')" style="padding:7px 14px;font-size:13.5px;" data-i18n="frm.split">⚖ 50 / 50 Split</button>
+      <button type="button" class="btn ghost sm" onclick="quickSplit('clear')" style="padding:7px 14px;font-size:13.5px;" data-i18n="frm.clearsplit">✕ Clear Split</button>
     </div>
     <div id="splitStatus"></div>
     <div class="form-total">
       <div>
-        <div class="form-total-label">Total Amount (SAR)</div>
+        <div class="form-total-label" data-i18n="frm.total">Total Amount (SAR)</div>
         <div class="form-total-value" id="formTotalValue">0</div>
       </div>
       <div style="text-align:right;">
@@ -1085,29 +1085,29 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   </div>
   <div class="panel">
     <div class="filters-row">
-      <div class="form-field"><label>From Date</label><input type="date" id="filterFrom" onchange="renderHistory()"></div>
-      <div class="form-field"><label>To Date</label><input type="date" id="filterTo" onchange="renderHistory()"></div>
+      <div class="form-field"><label data-i18n="hist.from">From Date</label><input type="date" id="filterFrom" onchange="renderHistory()"></div>
+      <div class="form-field"><label data-i18n="hist.to">To Date</label><input type="date" id="filterTo" onchange="renderHistory()"></div>
       <div class="form-field">
-        <label>Category</label>
+        <label data-i18n="hist.cat">Category</label>
         <select id="filterType" onchange="renderHistory()">
-          <option value="all">All Categories</option>
-          <option value="sale">Sales</option>
-          <option value="purchase_jewelry">Purchase — Jewelry</option>
-          <option value="purchase_scrap">Purchase — Scrap</option>
-          <option value="supplier_payment">Supplier Payments</option>
-          <option value="expense">Expenses</option>
+          <option value="all" data-i18n="opt.allcat">All Categories</option>
+          <option value="sale" data-i18n="opt.sales">Sales</option>
+          <option value="purchase_jewelry" data-i18n="opt.pj">Purchase — Jewelry</option>
+          <option value="purchase_scrap" data-i18n="opt.ps">Purchase — Scrap</option>
+          <option value="supplier_payment" data-i18n="opt.sp">Supplier Payments</option>
+          <option value="expense" data-i18n="opt.exp">Expenses</option>
         </select>
       </div>
       <div class="form-field">
-        <label>Status</label>
+        <label data-i18n="hist.status">Status</label>
         <select id="filterStatus" onchange="renderHistory()">
-          <option value="all">All</option>
-          <option value="paid">Active / Paid</option>
-          <option value="canceled">Canceled</option>
+          <option value="all" data-i18n="opt.all">All</option>
+          <option value="paid" data-i18n="opt.paid">Active / Paid</option>
+          <option value="canceled" data-i18n="opt.canceled">Canceled</option>
         </select>
       </div>
       <div class="form-field" style="flex:1;min-width:160px;">
-        <label>Search Invoice #</label>
+        <label data-i18n="hist.search">Search Invoice #</label>
         <input type="text" id="filterSearch" placeholder="Type to search... ( / )" oninput="renderHistory()">
       </div>
     </div>
@@ -1116,10 +1116,10 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       <table>
         <thead>
           <tr>
-            <th>Category</th><th>Invoice</th><th>Date</th>
-            <th>21K (g / SAR)</th><th>18K (g / SAR)</th><th>24K (g / SAR)</th><th>Silver</th>
-            <th>21K-Equiv</th><th>Total (SAR)</th><th>Cash</th><th>Card/Transfer</th>
-            <th>Status</th><th>Validity</th><th>Audit</th><th>Actions</th>
+            <th data-i18n="th.cat">Category</th><th data-i18n="th.invoice">Invoice</th><th data-i18n="th.date">Date</th>
+            <th>21K (g / SAR)</th><th>18K (g / SAR)</th><th>24K (g / SAR)</th><th data-i18n="th.silver">Silver</th>
+            <th>21K-Equiv</th><th data-i18n="th.total">Total (SAR)</th><th data-i18n="th.cash">Cash</th><th data-i18n="th.card">Card/Transfer</th>
+            <th data-i18n="th.status">Status</th><th data-i18n="th.validity">Validity</th><th data-i18n="th.audit">Audit</th><th data-i18n="th.actions">Actions</th>
           </tr>
         </thead>
         <tbody id="historyBody"></tbody>
@@ -1140,25 +1140,25 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <div class="panel">
     <div class="act-filter-row">
       <div class="ff">
-        <label>Action Type</label>
+        <label data-i18n="act.type">Action Type</label>
         <select id="actTypeFilter" onchange="renderActivityLog()">
-          <option value="all">All Actions</option>
-          <option value="add">Added</option>
-          <option value="edit">Edited</option>
-          <option value="cancel">Canceled</option>
+          <option value="all" data-i18n="opt.allactions">All Actions</option>
+          <option value="add" data-i18n="opt.added">Added</option>
+          <option value="edit" data-i18n="opt.edited">Edited</option>
+          <option value="cancel" data-i18n="opt.canceledopt">Canceled</option>
         </select>
       </div>
       <div class="ff">
-        <label>User</label>
+        <label data-i18n="act.user">User</label>
         <select id="actUserFilter" onchange="renderActivityLog()">
-          <option value="all">All Users</option>
+          <option value="all" data-i18n="opt.allusers">All Users</option>
           <option value="Tareq">Tareq (Admin)</option>
           <option value="Mohammed Adel">Mohammed Adel (Supervisor)</option>
           <option value="Badr bin Sheehon">Badr bin Sheehon (Cashier)</option>
         </select>
       </div>
       <div class="ff" style="flex:1;min-width:200px;">
-        <label>Search Invoice / Reference</label>
+        <label data-i18n="act.search">Search Invoice / Reference</label>
         <input type="text" id="actSearch" placeholder="Type to search..." oninput="renderActivityLog()">
       </div>
     </div>
@@ -1178,19 +1178,19 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <div class="three-col" style="margin-bottom:22px;">
     <div class="overview-card">
       <div class="ov-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5.5c0-1.9-2.2-3.5-5-3.5S7 3.6 7 5.5 9.2 8.5 12 8.5s5 1.5 5 3.5-2.2 3.5-5 3.5-5-1.5-5-3.5"/></svg></div>
-      <div class="ov-label">Total Revenue</div>
+      <div class="ov-label" data-i18n="an.revenue">Total Revenue</div>
       <div class="ov-value" id="an-revenue">—</div>
       <div class="ov-sub" id="an-revenue-sub">—</div>
     </div>
     <div class="overview-card">
       <div class="ov-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M4 20h16M6 20l6-14 6 14M4.5 9h3.5M16 9h3.5M6 9a1.5 3 0 003.5 0M14.5 9a1.5 3 0 003.5 0"/></svg></div>
-      <div class="ov-label">Total Gold Sold</div>
+      <div class="ov-label" data-i18n="an.goldsold">Total Gold Sold</div>
       <div class="ov-value" id="an-gold">—</div>
       <div class="ov-sub" id="an-gold-sub">21K-equivalent grams</div>
     </div>
     <div class="overview-card">
       <div class="ov-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10a1 1 0 011 1v16l-6-3-6 3V4a1 1 0 011-1z"/><path d="M9 8h6M9 11h6"/></svg></div>
-      <div class="ov-label">Total Invoices</div>
+      <div class="ov-label" data-i18n="an.invoices">Total Invoices</div>
       <div class="ov-value" id="an-invoices">—</div>
       <div class="ov-sub" id="an-invoices-sub">—</div>
     </div>
@@ -1198,32 +1198,32 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <div class="two-col" style="margin-bottom:22px;">
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Sales by Karat — Revenue (SAR)</div>
+        <div class="panel-title" data-i18n="an.karatrev">Sales by Karat — Revenue (SAR)</div>
       </div>
       <div class="chart-box" style="height:280px;"><canvas id="karatChart"></canvas></div>
     </div>
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">Sales vs Purchases</div>
+        <div class="panel-title" data-i18n="an.salesvspurch">Sales vs Purchases</div>
       </div>
       <div class="chart-box" style="height:280px;"><canvas id="spChart"></canvas></div>
     </div>
   </div>
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title">Daily Revenue Trend</div>
+      <div class="panel-title" data-i18n="an.dailytrend">Daily Revenue Trend</div>
     </div>
     <div class="chart-box" style="height:300px;"><canvas id="dailyChart"></canvas></div>
   </div>
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title">Karat Weight Breakdown Per Day (grams)</div>
+      <div class="panel-title" data-i18n="an.karatbreakdown">Karat Weight Breakdown Per Day (grams)</div>
     </div>
     <div class="chart-box" style="height:260px;"><canvas id="stackedKaratChart"></canvas></div>
   </div>
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title">Cash vs Card Collections — Cumulative</div>
+      <div class="panel-title" data-i18n="an.cashcard">Cash vs Card Collections — Cumulative</div>
     </div>
     <div class="chart-box" style="height:240px;"><canvas id="cashCardChart"></canvas></div>
   </div>
@@ -1239,32 +1239,32 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   </div>
   <div class="panel">
     <div class="filters-row">
-      <div class="form-field"><label>From</label><input type="date" id="repFrom"></div>
-      <div class="form-field"><label>To</label><input type="date" id="repTo"></div>
+      <div class="form-field"><label data-i18n="rep.from">From</label><input type="date" id="repFrom"></div>
+      <div class="form-field"><label data-i18n="rep.to">To</label><input type="date" id="repTo"></div>
       <div class="form-field">
-        <label>Category</label>
+        <label data-i18n="hist.cat">Category</label>
         <select id="repCategory">
-          <option value="all">All Categories</option>
-          <option value="sale">Sales</option>
-          <option value="purchase_jewelry">Purchase — Jewelry</option>
-          <option value="purchase_scrap">Purchase — Scrap</option>
-          <option value="supplier_payment">Supplier Payments</option>
-          <option value="expense">Expenses</option>
+          <option value="all" data-i18n="opt.allcat">All Categories</option>
+          <option value="sale" data-i18n="opt.sales">Sales</option>
+          <option value="purchase_jewelry" data-i18n="opt.pj">Purchase — Jewelry</option>
+          <option value="purchase_scrap" data-i18n="opt.ps">Purchase — Scrap</option>
+          <option value="supplier_payment" data-i18n="opt.sp">Supplier Payments</option>
+          <option value="expense" data-i18n="opt.exp">Expenses</option>
         </select>
       </div>
       <div class="form-field">
-        <label>Status</label>
+        <label data-i18n="hist.status">Status</label>
         <select id="repStatus">
-          <option value="all">All</option>
-          <option value="paid">Active / Paid</option>
-          <option value="canceled">Canceled</option>
+          <option value="all" data-i18n="opt.all">All</option>
+          <option value="paid" data-i18n="opt.paid">Active / Paid</option>
+          <option value="canceled" data-i18n="opt.canceled">Canceled</option>
         </select>
       </div>
     </div>
     <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;">
-      <button class="btn gold" onclick="exportCustomReport('excel')">↓ Export to Excel</button>
-      <button class="btn" onclick="exportCustomReport('pdf')">⎙ Print / Save PDF</button>
-      <button class="btn ghost" onclick="previewReport()">Preview</button>
+      <button class="btn gold" onclick="exportCustomReport('excel')" data-i18n="rep.excel">↓ Export to Excel</button>
+      <button class="btn" onclick="exportCustomReport('pdf')" data-i18n="rep.pdf">⎙ Print / Save PDF</button>
+      <button class="btn ghost" onclick="previewReport()" data-i18n="rep.preview">Preview</button>
     </div>
     <div id="reportPreview"></div>
   </div>
@@ -1282,8 +1282,8 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <!-- ── User Management (admin only) ── -->
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title">👤 User Management</div>
-      <button class="btn gold small" onclick="openUserModal()">+ Add User</button>
+      <div class="panel-title" data-i18n="set.usermgmt">👤 User Management</div>
+      <button class="btn gold small" onclick="openUserModal()" data-i18n="set.adduser">+ Add User</button>
     </div>
     <div class="settings-note" style="margin-bottom:16px;">
       Create accounts for your team and control exactly what each person can see and do.
@@ -1304,15 +1304,15 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <div class="two-col" style="align-items:start;">
     <div>
       <div class="panel">
-        <div class="panel-title" style="margin-bottom:16px;">💾 Data Backup</div>
+        <div class="panel-title" style="margin-bottom:16px;" data-i18n="set.backup">💾 Data Backup</div>
         <div class="settings-note">
           All data is stored in your browser's <b>localStorage</b> — it persists through page refreshes and
           browser restarts. Download a JSON backup regularly to avoid data loss if the browser cache is cleared.
         </div>
         <div id="backupStatus" style="margin-top:12px;"></div>
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
-          <button class="btn gold" onclick="exportBackup()">↓ Download JSON Backup</button>
-          <button class="btn" onclick="importBackup()">↑ Restore from Backup</button>
+          <button class="btn gold" onclick="exportBackup()" data-i18n="set.download">↓ Download JSON Backup</button>
+          <button class="btn" onclick="importBackup()" data-i18n="set.restore">↑ Restore from Backup</button>
           <input type="file" id="backupFile" accept=".json" style="display:none" onchange="doRestore(this)">
         </div>
       </div>
@@ -1353,7 +1353,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
           <b>Warning:</b> Resetting all data will delete every entry and restore the seed demo data.
           This action cannot be undone. Download a backup first.
         </div>
-        <button class="btn danger" style="margin-top:14px;" onclick="resetAllData()">Reset All Data</button>
+        <button class="btn danger" style="margin-top:14px;" onclick="resetAllData()" data-i18n="set.reset">Reset All Data</button>
       </div>
     </div>
   </div>
@@ -1368,17 +1368,17 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       <div class="page-subtitle" data-i18n="con.sub">Manage customers and suppliers with full transaction history</div>
     </div>
     <div class="topbar-actions">
-      <button class="btn gold" onclick="openContactModal()">+ Add Contact</button>
+      <button class="btn gold" onclick="openContactModal()" data-i18n="con.addcontact">+ Add Contact</button>
     </div>
   </div>
   <div class="panel">
     <div class="contacts-toolbar">
       <input type="text" id="contactSearch" placeholder="Search by name or phone..." oninput="renderContacts()">
       <select id="contactTypeFilter" onchange="renderContacts()" style="background:var(--surface-2);border:1.5px solid var(--line);color:var(--cream);padding:9px 13px;border-radius:var(--radius-sm);font-size:14.5px;font-family:'IBM Plex Mono',monospace;">
-        <option value="all">All Types</option>
-        <option value="customer">Customers Only</option>
-        <option value="supplier">Suppliers Only</option>
-        <option value="both">Both</option>
+        <option value="all" data-i18n="opt.alltypes">All Types</option>
+        <option value="customer" data-i18n="opt.custonly">Customers Only</option>
+        <option value="supplier" data-i18n="opt.supponly">Suppliers Only</option>
+        <option value="both" data-i18n="opt.both">Both</option>
       </select>
     </div>
     <div class="contacts-grid" id="contactsGrid"></div>
@@ -1393,14 +1393,14 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       <div class="page-subtitle" data-i18n="pro.sub">Set cost rates per gram and see profit margin on each sale invoice</div>
     </div>
     <div class="topbar-actions">
-      <button class="btn gold" onclick="saveProfitRates()">💾 Save Rates</button>
+      <button class="btn gold" onclick="saveProfitRates()" data-i18n="pro.saverates">💾 Save Rates</button>
     </div>
   </div>
 
   <!-- Cost Rate Inputs -->
   <div class="panel profit-section">
     <div class="panel-header">
-      <div class="panel-title">◆ Cost Rates per Gram (SAR)</div>
+      <div class="panel-title" data-i18n="pro.costrates">◆ Cost Rates per Gram (SAR)</div>
       <div style="font-size:13px;color:var(--cream-dim);">These are your purchase/cost price per gram for each karat</div>
     </div>
     <div class="profit-rate-grid">
@@ -1433,7 +1433,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
   <!-- Profit Table -->
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title">Sale Invoice Profit Breakdown</div>
+      <div class="panel-title" data-i18n="pro.breakdown">Sale Invoice Profit Breakdown</div>
       <div style="font-size:13px;color:var(--cream-dim);">Only active sale invoices · Sorted by profit %</div>
     </div>
     <div class="profit-table-wrap">
@@ -1464,15 +1464,15 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 <!-- Cancel/Delete modal -->
 <div class="modal-overlay" id="deleteModal">
   <div class="modal">
-    <h3>Cancel Entry</h3>
-    <p>This entry will not be deleted — it will be marked <strong>Canceled</strong> in the ledger for full audit traceability. This action cannot be reversed.</p>
+    <h3 data-i18n="mod.cancelentry">Cancel Entry</h3>
+    <p data-i18n="mod.canceldesc">This entry will not be deleted — it will be marked <strong>Canceled</strong> in the ledger for full audit traceability. This action cannot be reversed.</p>
     <div class="form-field">
       <label id="cancelNoteLabel">Reason / Note</label>
       <textarea id="cancelNoteInput" rows="3" placeholder="Describe the reason for canceling this entry..."></textarea>
     </div>
     <div class="modal-actions">
-      <button class="btn ghost" onclick="closeDeleteModal()">Go Back</button>
-      <button class="btn danger" onclick="confirmDelete()">Confirm Cancel Entry</button>
+      <button class="btn ghost" onclick="closeDeleteModal()" data-i18n="mod.goback">Go Back</button>
+      <button class="btn danger" onclick="confirmDelete()" data-i18n="mod.confirmcancel">Confirm Cancel Entry</button>
     </div>
   </div>
 </div>
@@ -1480,7 +1480,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 <!-- Opening Balance modal -->
 <div class="modal-overlay" id="openingModal">
   <div class="modal">
-    <h3>Edit Opening Balance</h3>
+    <h3 data-i18n="mod.opening">Edit Opening Balance</h3>
     <p>Set the opening values for <strong id="openingModalDate" style="color:var(--gold-24);"></strong>. This is carried forward from the previous day if left blank.</p>
     <div class="form-grid">
       <div class="form-field">
@@ -1497,8 +1497,8 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn ghost" onclick="closeOpeningModal()">Cancel</button>
-      <button class="btn gold" onclick="saveOpening()">Save Opening Balance</button>
+      <button class="btn ghost" onclick="closeOpeningModal()" data-i18n="mod.cancel">Cancel</button>
+      <button class="btn gold" onclick="saveOpening()" data-i18n="mod.saveopening">Save Opening Balance</button>
     </div>
   </div>
 </div>
@@ -1510,8 +1510,8 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
     <p id="detailModalSub" style="margin-bottom:10px;"></p>
     <div id="detailModalBody"></div>
     <div class="modal-actions">
-      <button class="btn ghost" onclick="closeDetailModal()">Close</button>
-      <button class="btn" onclick="printFromDetail()">⎙ Print Slip</button>
+      <button class="btn ghost" onclick="closeDetailModal()" data-i18n="mod.close">Close</button>
+      <button class="btn" onclick="printFromDetail()" data-i18n="mod.print">⎙ Print Slip</button>
     </div>
   </div>
 </div>
@@ -1519,7 +1519,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 <!-- Keyboard Shortcuts modal -->
 <div class="modal-overlay" id="shortcutsModal">
   <div class="modal">
-    <h3>Keyboard Shortcuts</h3>
+    <h3 data-i18n="mod.shortcuts">Keyboard Shortcuts</h3>
     <p>Speed up your workflow with these shortcuts.</p>
     <div class="shortcut-list">
       <div class="shortcut-row">
@@ -1548,7 +1548,7 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn gold" onclick="closeShortcuts()">Got it</button>
+      <button class="btn gold" onclick="closeShortcuts()" data-i18n="mod.gotit">Got it</button>
     </div>
   </div>
 </div>
@@ -1587,8 +1587,8 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
     </div>
     <div id="userModalWarning"></div>
     <div class="modal-actions">
-      <button class="btn ghost" onclick="closeUserModal()">Cancel</button>
-      <button class="btn gold" onclick="saveUser()">Save User</button>
+      <button class="btn ghost" onclick="closeUserModal()" data-i18n="mod.cancel">Cancel</button>
+      <button class="btn gold" onclick="saveUser()" data-i18n="mod.saveuser">Save User</button>
     </div>
   </div>
 </div>
@@ -1610,9 +1610,9 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       <div class="form-field">
         <label>Type *</label>
         <select id="cType" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line);color:var(--cream);padding:10px 13px;border-radius:var(--radius-sm);font-size:14.5px;font-family:'Inter',sans-serif;">
-          <option value="customer">Customer</option>
-          <option value="supplier">Supplier</option>
-          <option value="both">Both</option>
+          <option value="customer" data-i18n="opt.customer">Customer</option>
+          <option value="supplier" data-i18n="opt.supplier">Supplier</option>
+          <option value="both" data-i18n="opt.both">Both</option>
         </select>
       </div>
       <div class="form-field" style="grid-column:1/-1;">
@@ -1629,9 +1629,9 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn ghost" onclick="closeContactModal()">Cancel</button>
-      <button class="btn danger" id="contactDeleteBtn" style="display:none;" onclick="deleteContact()">Delete</button>
-      <button class="btn gold" onclick="saveContact()">Save Contact</button>
+      <button class="btn ghost" onclick="closeContactModal()" data-i18n="mod.cancel">Cancel</button>
+      <button class="btn danger" id="contactDeleteBtn" style="display:none;" onclick="deleteContact()" data-i18n="mod.delete">Delete</button>
+      <button class="btn gold" onclick="saveContact()" data-i18n="mod.savecontact">Save Contact</button>
     </div>
   </div>
 </div>
@@ -1645,8 +1645,8 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
     <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-dim);font-weight:600;margin-bottom:10px;">Transaction History</div>
     <div class="contact-history-list" id="cdHistoryList"></div>
     <div class="modal-actions" style="margin-top:16px;">
-      <button class="btn ghost" onclick="closeContactDetailModal()">Close</button>
-      <button class="btn" onclick="editContactFromDetail()">✎ Edit</button>
+      <button class="btn ghost" onclick="closeContactDetailModal()" data-i18n="mod.close">Close</button>
+      <button class="btn" onclick="editContactFromDetail()" data-i18n="mod.edit">✎ Edit</button>
     </div>
   </div>
 </div>
@@ -1660,10 +1660,18 @@ html[dir="rtl"] .card-delta { flex-direction: row-reverse; justify-content: flex
 /* ══════════════════════════════════════════════
    CONSTANTS & CHART DEFAULTS  (same as original)
 ══════════════════════════════════════════════ */
-const CAT_LABELS = {
+const CAT_LABELS_EN = {
   sale: 'Sale', purchase_jewelry: 'Purchase (Jewelry)',
   purchase_scrap: 'Purchase (Scrap)', supplier_payment: 'Supplier Payment', expense: 'Expense'
 };
+const CAT_LABELS_AR = {
+  sale: 'بيع', purchase_jewelry: 'شراء مصاغ',
+  purchase_scrap: 'شراء خردة', supplier_payment: 'دفع مورد', expense: 'مصروف'
+};
+function getCatLabel(cat) {
+  return (_lang === 'ar' ? CAT_LABELS_AR : CAT_LABELS_EN)[cat] || cat;
+}
+const CAT_LABELS = CAT_LABELS_EN;
 const KARAT_COLORS = { '21': '#C9A227', '18': '#A9822E', '24': '#E7C158', 'S': '#B9C2C7' };
 const CHART_GRID = 'rgba(58,51,31,.4)';
 const CHART_TEXT = '#A89F86';
@@ -2234,7 +2242,7 @@ function renderSplitStatus(total) {
 function checkDuplicate() {
   const inv=document.getElementById('fInvoice').value, date=document.getElementById('fDate').value;
   const dup=_entries.some((e,i)=>String(e.invoice_no)===inv && e.invoice_date===date && e.category===entryCategory && i!==editingIndex);
-  document.getElementById('dupWarning').innerHTML = dup ? `<div class="alert warn"><span class="alert-icon">⚠</span>Invoice <strong>${esc(inv)}</strong> already exists as a ${CAT_LABELS[entryCategory]} on ${esc(date)}.</div>` : '';
+  document.getElementById('dupWarning').innerHTML = dup ? `<div class="alert warn"><span class="alert-icon">⚠</span>Invoice <strong>${esc(inv)}</strong> already exists as a ${getCatLabel(entryCategory)} on ${esc(date)}.</div>` : '';
 }
 
 async function saveEntry() {
@@ -2340,7 +2348,7 @@ let detailIdx = null;
 function openDetail(idx) {
   const e = _entries[idx]; detailIdx = idx;
   document.getElementById('detailModalTitle').textContent = `Invoice #${e.invoice_no}`;
-  document.getElementById('detailModalSub').innerHTML = `<span class="tag ${e.category}">${CAT_LABELS[e.category]}</span>&nbsp;&nbsp;<span class="tag status-${e.status}">${e.status}</span>${e.validity==='Edited'?'&nbsp;&nbsp;<span class="tag valid-edited">Edited</span>':''}`;
+  document.getElementById('detailModalSub').innerHTML = `<span class="tag ${e.category}">${getCatLabel(e.category)}</span>&nbsp;&nbsp;<span class="tag status-${e.status}">${e.status}</span>${e.validity==='Edited'?'&nbsp;&nbsp;<span class="tag valid-edited">Edited</span>':''}`;
   const rows = [
     ['Date', e.invoice_date],
     e.weight_21k ? ['21K Gold', `${e.weight_21k}g — SAR ${fmt(e.amount_21k)}`] : null,
@@ -2407,7 +2415,7 @@ function renderHistory() {
     if (e.validity==='Edited' && e.updated_by_name) audit += `Edited by ${esc(e.updated_by_name)}<br>${fmtDT(e.updated_at)}`;
     if (e.note) audit += (audit?'<br>':'') + `<em>${esc(e.note)}</em>`;
     return `<tr class="${e.status==='canceled'?'canceled-row':''}">
-      <td><span class="tag ${e.category}">${CAT_LABELS[e.category]}</span></td>
+      <td><span class="tag ${e.category}">${getCatLabel(e.category)}</span></td>
       <td style="cursor:pointer;color:var(--gold-21);font-weight:700;" onclick="openDetail(${i})">${esc(e.invoice_no)}</td>
       <td>${esc(e.invoice_date)}</td>
       <td>${e.weight_21k ? e.weight_21k+'g / '+fmt(e.amount_21k) : '—'}</td>
@@ -2443,7 +2451,7 @@ function renderHistory() {
 }
 function exportExcel() {
   const rows = _entries.map(e => ({
-    Category: CAT_LABELS[e.category], Invoice: e.invoice_no, Date: e.invoice_date,
+    Category: getCatLabel(e.category), Invoice: e.invoice_no, Date: e.invoice_date,
     '21K_g': e.weight_21k, '21K_SAR': e.amount_21k, '18K_g': e.weight_18k, '18K_SAR': e.amount_18k,
     '24K_g': e.weight_24k, '24K_SAR': e.amount_24k, 'Silver_g': e.weight_silver, 'Silver_SAR': e.amount_silver,
     Cash: e.cash_amount, Card: e.card_amount, Total: entryTotal(e),
@@ -2494,7 +2502,7 @@ function renderActivityLog() {
       <div class="act-body">
         <div class="act-title">
           <span class="act-user">${esc(l.user_name||'')}</span> ${LABELS[l.action_type]||l.action_type}
-          <span class="act-inv"> ${esc(CAT_LABELS[l.category]||l.category||'')} #${esc(l.invoice_no||'')}</span>
+          <span class="act-inv"> ${esc(getCatLabel(l.category)||l.category||'')} #${esc(l.invoice_no||'')}</span>
           ${l.amount ? `&nbsp;<span style="color:var(--cream-dim);font-weight:400;">(SAR ${fmt(l.amount)})</span>` : ''}
         </div>
         <div class="act-meta">
@@ -2629,7 +2637,7 @@ function previewReport() {
       <div class="table-wrap"><table>
         <thead><tr><th>Cat</th><th>Invoice</th><th>Date</th><th>21K</th><th>18K</th><th>24K</th><th>Silver</th><th>Total</th><th>Cash</th><th>Card</th><th>Status</th></tr></thead>
         <tbody>${rows.map(e => `<tr class="${e.status==='canceled'?'canceled-row':''}">
-          <td><span class="tag ${e.category}">${CAT_LABELS[e.category]}</span></td>
+          <td><span class="tag ${e.category}">${getCatLabel(e.category)}</span></td>
           <td style="color:var(--gold-21);font-weight:700;">${esc(e.invoice_no)}</td>
           <td>${esc(e.invoice_date)}</td>
           <td>${e.weight_21k?e.weight_21k+'g':'—'}</td>
@@ -2658,7 +2666,7 @@ function exportCustomReport(mode) {
     if (st==='paid' && e.status==='canceled') return false;
     if (st==='canceled' && e.status!=='canceled') return false;
     return true;
-  }).map(e => ({ Category:CAT_LABELS[e.category], Invoice:e.invoice_no, Date:e.invoice_date, Total:entryTotal(e), Cash:e.cash_amount||0, Card:e.card_amount||0, Status:e.status }));
+  }).map(e => ({ Category:getCatLabel(e.category), Invoice:e.invoice_no, Date:e.invoice_date, Total:entryTotal(e), Cash:e.cash_amount||0, Card:e.card_amount||0, Status:e.status }));
   const ws = XLSX.utils.json_to_sheet(rows);
   const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'Report');
   XLSX.writeFile(wb, 'swag-gold-report.xlsx');
@@ -2912,7 +2920,7 @@ function openContactDetail(id) {
     ? invs.map(e=>`<div class="contact-hist-item">
         <div class="contact-hist-left">
           <div class="chi-inv">#${esc(e.invoice_no)}</div>
-          <div class="chi-cat">${CAT_LABELS[e.category]||e.category}</div>
+          <div class="chi-cat">${getCatLabel(e.category)||e.category}</div>
         </div>
         <div class="contact-hist-right">
           <div class="chi-amt">SAR ${fmt(e.total_amount||0)}</div>
@@ -3016,7 +3024,7 @@ function printInvoice(i) {
   document.getElementById('printOnly').innerHTML = `
     <div class="slip-box">
       <h2>Swag Gold</h2>
-      <div class="slip-sub">Exhibition ${CAT_LABELS[e.category]}${e.status==='canceled'?' — CANCELED':''}</div>
+      <div class="slip-sub">Exhibition ${getCatLabel(e.category)}${e.status==='canceled'?' — CANCELED':''}</div>
       <hr class="slip-divider">
       <div class="slip-row"><span>Invoice No.</span><span>${esc(e.invoice_no)}</span></div>
       <div class="slip-row"><span>Date</span><span>${esc(e.invoice_date)}</span></div>
@@ -3038,7 +3046,7 @@ function printInvoice(i) {
 }
 function shareWhatsApp(i) {
   const e = _entries[i];
-  const msg = `*Swag Gold — ${CAT_LABELS[e.category]}*\nInvoice: ${e.invoice_no} | Date: ${e.invoice_date}\nStatus: ${e.status.toUpperCase()}\nTotal: SAR ${fmt(entryTotal(e))}\nCash: ${fmt(e.cash_amount||0)} | Card: ${fmt(e.card_amount||0)}\n${calcConv(e)>0?'Gold (21K-equiv): '+fmtD(calcConv(e))+'g\n':''}`;
+  const msg = `*Swag Gold — ${getCatLabel(e.category)}*\nInvoice: ${e.invoice_no} | Date: ${e.invoice_date}\nStatus: ${e.status.toUpperCase()}\nTotal: SAR ${fmt(entryTotal(e))}\nCash: ${fmt(e.cash_amount||0)} | Card: ${fmt(e.card_amount||0)}\n${calcConv(e)>0?'Gold (21K-equiv): '+fmtD(calcConv(e))+'g\n':''}`;
   window.open('https://wa.me/?text='+encodeURIComponent(msg), '_blank');
 }
 function exportDayPDF() {
@@ -3115,6 +3123,60 @@ const TRANSLATIONS = {
     'pro.title':'Profit Calculator',
     'pro.sub':'Set cost rates per gram and see profit margin on each sale invoice',
     'set.title':'Settings','set.sub':'Application configuration and data management',
+    // Dashboard
+    'dash.cashflow':'Cash & Card Flow','dash.karatday':'Sales by Karat (This Day)',
+    'dash.daybal':'Day Balance','dash.overview':'Exhibition Overview',
+    'dash.weightdist':'Weight Distribution — Sales (grams by purity)',
+    // Form
+    'frm.invoice':'Invoice No.','frm.date':'Date','frm.desc':'Description / Reference',
+    'frm.cash':'Cash (SAR)','frm.card':'Card / Transfer (SAR)','frm.total':'Total Amount (SAR)',
+    'frm.allcash':'💵 All Cash','frm.allcard':'💳 All Card',
+    'frm.split':'⚖ 50 / 50 Split','frm.clearsplit':'✕ Clear Split',
+    // History
+    'hist.from':'From Date','hist.to':'To Date','hist.cat':'Category',
+    'hist.status':'Status','hist.search':'Search Invoice #',
+    // Table headers
+    'th.cat':'Category','th.invoice':'Invoice','th.date':'Date','th.silver':'Silver',
+    'th.total':'Total (SAR)','th.cash':'Cash','th.card':'Card/Transfer',
+    'th.status':'Status','th.validity':'Validity','th.audit':'Audit','th.actions':'Actions',
+    // Activity
+    'act.type':'Action Type','act.user':'User','act.search':'Search Invoice / Reference',
+    // Analytics
+    'an.revenue':'Total Revenue','an.goldsold':'Total Gold Sold','an.invoices':'Total Invoices',
+    'an.karatrev':'Sales by Karat — Revenue (SAR)','an.salesvspurch':'Sales vs Purchases',
+    'an.dailytrend':'Daily Revenue Trend',
+    'an.karatbreakdown':'Karat Weight Breakdown Per Day (grams)',
+    'an.cashcard':'Cash vs Card Collections — Cumulative',
+    // Reports
+    'rep.from':'From','rep.to':'To','rep.excel':'↓ Export to Excel',
+    'rep.pdf':'⎙ Print / Save PDF','rep.preview':'Preview',
+    // Settings
+    'set.usermgmt':'👤 User Management','set.adduser':'+ Add User',
+    'set.backup':'💾 Data Backup','set.download':'↓ Download JSON Backup',
+    'set.restore':'↑ Restore from Backup','set.roles':'Roles & Permissions Reference',
+    'set.reset':'Reset All Data',
+    // Contacts
+    'con.addcontact':'+ Add Contact',
+    // Profit
+    'pro.saverates':'💾 Save Rates','pro.costrates':'◆ Cost Rates per Gram (SAR)',
+    'pro.breakdown':'Sale Invoice Profit Breakdown',
+    // Modals
+    'mod.cancelentry':'Cancel Entry',
+    'mod.canceldesc':'This entry will not be deleted — it will be marked Canceled in the ledger for full audit traceability. This action cannot be reversed.',
+    'mod.goback':'Go Back','mod.confirmcancel':'Confirm Cancel Entry',
+    'mod.opening':'Edit Opening Balance','mod.cancel':'Cancel',
+    'mod.saveopening':'Save Opening Balance','mod.close':'Close',
+    'mod.print':'⎙ Print Slip','mod.shortcuts':'Keyboard Shortcuts',
+    'mod.gotit':'Got it','mod.saveuser':'Save User',
+    'mod.delete':'Delete','mod.savecontact':'Save Contact','mod.edit':'✎ Edit',
+    // Select options
+    'opt.allcat':'All Categories','opt.sales':'Sales','opt.pj':'Purchase — Jewelry',
+    'opt.ps':'Purchase — Scrap','opt.sp':'Supplier Payments','opt.exp':'Expenses',
+    'opt.all':'All','opt.paid':'Active / Paid','opt.canceled':'Canceled',
+    'opt.allactions':'All Actions','opt.added':'Added','opt.edited':'Edited','opt.canceledopt':'Canceled',
+    'opt.allusers':'All Users','opt.alltypes':'All Types',
+    'opt.custonly':'Customers Only','opt.supponly':'Suppliers Only','opt.both':'Both',
+    'opt.customer':'Customer','opt.supplier':'Supplier',
   },
   ar: {
     'brand.name':'سواج للذهب','brand.sub':'دفتر المعرض',
@@ -3146,6 +3208,60 @@ const TRANSLATIONS = {
     'pro.title':'حاسبة الأرباح',
     'pro.sub':'احتساب هوامش الربح لكل فاتورة بيع',
     'set.title':'الإعدادات','set.sub':'تكوين التطبيق وإدارة البيانات',
+    // Dashboard
+    'dash.cashflow':'تدفق النقد والبطاقة','dash.karatday':'المبيعات حسب العيار (اليوم)',
+    'dash.daybal':'رصيد اليوم','dash.overview':'نظرة عامة على المعرض',
+    'dash.weightdist':'توزيع الوزن — المبيعات (جرام حسب العيار)',
+    // Form
+    'frm.invoice':'رقم الفاتورة','frm.date':'التاريخ','frm.desc':'الوصف / المرجع',
+    'frm.cash':'نقداً (ريال)','frm.card':'بطاقة / تحويل (ريال)','frm.total':'المبلغ الإجمالي (ريال)',
+    'frm.allcash':'💵 كل النقد','frm.allcard':'💳 كل البطاقة',
+    'frm.split':'⚖ تقسيم 50 / 50','frm.clearsplit':'✕ مسح التقسيم',
+    // History
+    'hist.from':'من تاريخ','hist.to':'إلى تاريخ','hist.cat':'الفئة',
+    'hist.status':'الحالة','hist.search':'ابحث برقم الفاتورة',
+    // Table headers
+    'th.cat':'الفئة','th.invoice':'الفاتورة','th.date':'التاريخ','th.silver':'الفضة',
+    'th.total':'الإجمالي (ريال)','th.cash':'نقداً','th.card':'بطاقة/تحويل',
+    'th.status':'الحالة','th.validity':'الصلاحية','th.audit':'التدقيق','th.actions':'الإجراءات',
+    // Activity
+    'act.type':'نوع الإجراء','act.user':'المستخدم','act.search':'ابحث في الفاتورة / المرجع',
+    // Analytics
+    'an.revenue':'إجمالي الإيرادات','an.goldsold':'إجمالي الذهب المباع','an.invoices':'إجمالي الفواتير',
+    'an.karatrev':'المبيعات حسب العيار — الإيرادات (ريال)','an.salesvspurch':'المبيعات مقابل المشتريات',
+    'an.dailytrend':'اتجاه الإيرادات اليومية',
+    'an.karatbreakdown':'تفصيل وزن العيار يومياً (جرام)',
+    'an.cashcard':'النقد مقابل البطاقة — تراكمي',
+    // Reports
+    'rep.from':'من','rep.to':'إلى','rep.excel':'↓ تصدير إلى Excel',
+    'rep.pdf':'⎙ طباعة / حفظ PDF','rep.preview':'معاينة',
+    // Settings
+    'set.usermgmt':'👤 إدارة المستخدمين','set.adduser':'+ إضافة مستخدم',
+    'set.backup':'💾 نسخ احتياطي','set.download':'↓ تنزيل نسخة JSON',
+    'set.restore':'↑ استعادة من نسخة احتياطية','set.roles':'مرجع الأدوار والصلاحيات',
+    'set.reset':'إعادة تعيين جميع البيانات',
+    // Contacts
+    'con.addcontact':'+ إضافة جهة اتصال',
+    // Profit
+    'pro.saverates':'💾 حفظ الأسعار','pro.costrates':'◆ أسعار التكلفة لكل جرام (ريال)',
+    'pro.breakdown':'تفصيل أرباح فاتورة البيع',
+    // Modals
+    'mod.cancelentry':'إلغاء الإدخال',
+    'mod.canceldesc':'لن يتم حذف هذا الإدخال — سيتم وضع علامة ملغى في دفتر الأستاذ لضمان سلامة التدقيق الكامل. لا يمكن التراجع عن هذا الإجراء.',
+    'mod.goback':'رجوع','mod.confirmcancel':'تأكيد إلغاء الإدخال',
+    'mod.opening':'تعديل رصيد الافتتاح','mod.cancel':'إلغاء',
+    'mod.saveopening':'حفظ رصيد الافتتاح','mod.close':'إغلاق',
+    'mod.print':'⎙ طباعة الإيصال','mod.shortcuts':'اختصارات لوحة المفاتيح',
+    'mod.gotit':'حسناً','mod.saveuser':'حفظ المستخدم',
+    'mod.delete':'حذف','mod.savecontact':'حفظ جهة الاتصال','mod.edit':'✎ تعديل',
+    // Select options
+    'opt.allcat':'جميع الفئات','opt.sales':'المبيعات','opt.pj':'شراء مصاغ',
+    'opt.ps':'شراء خردة','opt.sp':'مدفوعات الموردين','opt.exp':'المصروفات',
+    'opt.all':'الكل','opt.paid':'نشط / مدفوع','opt.canceled':'ملغى',
+    'opt.allactions':'جميع الإجراءات','opt.added':'مضاف','opt.edited':'معدّل','opt.canceledopt':'ملغى',
+    'opt.allusers':'جميع المستخدمين','opt.alltypes':'جميع الأنواع',
+    'opt.custonly':'العملاء فقط','opt.supponly':'الموردون فقط','opt.both':'كلاهما',
+    'opt.customer':'عميل','opt.supplier':'مورد',
   }
 };
 
@@ -3157,8 +3273,18 @@ function _t(key) {
 }
 function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    el.textContent = _t(el.getAttribute('data-i18n'));
+    const key = el.getAttribute('data-i18n');
+    const val = _t(key);
+    // For input placeholders, update placeholder instead
+    if (el.hasAttribute('placeholder')) {
+      el.setAttribute('placeholder', val);
+    } else {
+      el.textContent = val;
+    }
   });
+  // Re-render dynamic content that uses CAT_LABELS
+  if (typeof renderHistory === 'function') try { renderHistory(); } catch(e) {}
+  if (typeof renderActivityLog === 'function') try { renderActivityLog(); } catch(e) {}
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn) langBtn.textContent = _lang === 'ar' ? 'English' : 'عربي';
   // Update HTML font for Arabic
